@@ -72,6 +72,8 @@
 <body>
 <header class="header">
   <!-- LEFT -->
+   <button class="hamburger" onclick="openMenu()">☰</button>
+
   <div class="logo">
     🎨 <span>My Art Gallery</span>
   </div>
@@ -93,6 +95,15 @@
   </span>
 </label>
 </header>
+<div id="mobileMenu" class="mobile-menu">
+  <button class="close" onclick="closeMenu()">✕</button>
+
+  <button onclick="filterArt('all')">All</button>
+  <button onclick="filterArt('wall')">Wall Painting</button>
+  <button onclick="filterArt('sketch')">Sketch</button>
+</div>
+
+<div id="menuOverlay" onclick="closeMenu()"></div>
 
 
 
