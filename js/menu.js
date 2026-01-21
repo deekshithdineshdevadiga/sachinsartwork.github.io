@@ -9,13 +9,14 @@ function closeMenu() {
   document.getElementById("menuOverlay").style.display = "none";
 }
 
-function filterArt(type) {
-  document.querySelectorAll(".art-card").forEach(card => {
-    card.style.display =
-      type === "all" || card.classList.contains(type)
-      ? "block"
-      : "none";
-  });
-  closeMenu();
-}
+
+// function filterArt(type) {
+//   document.querySelectorAll(".art-card").forEach(card => {
+//     card.style.display =
+//       type === "all" || card.classList.contains(type)
+//       ? "block"
+//       : "none";
+//   });
+//   closeMenu();
+// }
 
