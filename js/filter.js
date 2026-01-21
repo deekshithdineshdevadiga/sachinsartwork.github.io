@@ -2,16 +2,20 @@ function filterArt(category, btn = null) {
   const cards = document.querySelectorAll(".art-card");
 
   cards.forEach(card => {
-    const cardCategory = card.getAttribute("data-category");
+    const cardCategory = card.dataset.category?.toLowerCase();
 
-    if (category === "all" || cardCategory === category) {
+    if (category === "all") {
       card.style.display = "block";
-    } else {
+    } 
+    else if (cardCategory === category.toLowerCase()) {
+      card.style.display = "block";
+    } 
+    else {
       card.style.display = "none";
     }
   });
 
-  // Active button highlight (desktop only)
+  // Desktop active state
   if (btn) {
     document.querySelectorAll(".filters button").forEach(b =>
       b.classList.remove("active")
