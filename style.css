@@ -245,56 +245,63 @@ body.dark footer {
 }
 
 /* ================= MOBILE MENU ================= */
+/* ================= MOBILE MENU (GLASS TRANSPARENT) ================= */
 .mobile-menu {
   position: fixed;
   top: 0;
   left: -260px;
   width: 240px;
   height: 100%;
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(10px);
+
+  background: rgba(255, 255, 255, 0.6); /* ✅ transparent */
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
   padding: 20px;
   z-index: 2000;
   transition: left 0.3s ease;
 }
 
+/* DARK MODE MOBILE MENU */
 body.dark .mobile-menu {
-  background: rgba(0,0,0,0.9);
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(14px);
 }
 
+/* MOBILE MENU BUTTONS */
 .mobile-menu button {
   display: block;
   width: 100%;
   padding: 14px;
-  margin: 10px 0;
+  margin: 12px 0;
   font-size: 16px;
-  border-radius: 12px;
+  border-radius: 14px;
   border: none;
   cursor: pointer;
+
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(6px);
 }
 
+/* DARK MODE BUTTONS */
+body.dark .mobile-menu button {
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+/* CLOSE BUTTON */
 .close {
   background: none;
   font-size: 22px;
   text-align: right;
+  color: inherit;
 }
 
-/* OVERLAY */
+/* OVERLAY (BACKGROUND DIM) */
 #menuOverlay {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.55);
   z-index: 1500;
-}
-
-/* ================= MOBILE ONLY ================= */
-@media (max-width: 768px) {
-  .filters {
-    display: none; /* hide top filters on mobile */
-  }
-
-  .hamburger {
-    display: block;
-  }
 }
