@@ -53,6 +53,15 @@ body.dark {
   z-index: 1000;
   border-bottom: 1px solid rgba(255,255,255,0.3);
 }
+.header-right {
+  display: flex;
+  align-items: center;
+}
+.header-left {
+  display: flex;          /* ✅ force horizontal */
+  align-items: center;    /* ✅ vertical center */
+  gap: 12px;              /* space between ☰ and logo */
+}
 
 /* DARK HEADER */
 body.dark .header {
@@ -62,41 +71,66 @@ body.dark .header {
 
 /* LOGO */
 .logo {
+  display: inline-flex;   /* ✅ stays inline */
+  align-items: center;
   font-size: 18px;
   font-weight: bold;
+  white-space: nowrap;    /* ✅ prevents breaking */
 }
+
 
 /* ================= FILTER BUTTONS ================= */
+/* FILTER CONTAINER */
 .filters {
   display: flex;
-  justify-content: center;
-  gap: 12px;
+  gap: 24px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
+
+/* FILTER BUTTONS – TEXT ONLY */
 .filters button {
-  padding: 6px 16px;
-  border-radius: 20px;
-  border: none;
+  background: none;        /* ❌ remove box */
+  border: none;            /* ❌ remove border */
+  padding: 6px 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: #555;
   cursor: pointer;
-  background: #eaeaea;
-  font-size: 14px;
+  position: relative;
 }
 
+/* ACTIVE TAB */
 .filters button.active {
-  background: #000;
-  color: #fff;
+  color: #000;
+  font-weight: 600;
 }
 
-/* DARK FILTERS */
+/* UNDERLINE FOR ACTIVE */
+.filters button.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: #000;
+}
+
+/* DARK MODE */
 body.dark .filters button {
-  background: #333;
-  color: #fff;
+  color: #aaa;
 }
 
 body.dark .filters button.active {
-  background: #fff;
-  color: #000;
+  color: #fff;
 }
+
+body.dark .filters button.active::after {
+  background: #fff;
+}
+
 
 /* ================= GALLERY ================= */
 .gallery {
@@ -237,57 +271,61 @@ body.dark footer {
 
 /* ================= MOBILE HAMBURGER ================= */
 .hamburger {
-  display: none;
+  display: inline-flex;   /* ✅ not block */
+  align-items: center;
+  justify-content: center;
   font-size: 24px;
   background: none;
   border: none;
   cursor: pointer;
 }
 
+
+
 /* ================= MOBILE MENU ================= */
 /* ================= MOBILE MENU (GLASS TRANSPARENT) ================= */
+.mobile-menu button {
+  width: 100%;
+  padding: 14px;
+  margin: 12px 0;
+  font-size: 16px;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+}
+
+body.dark .mobile-menu button {
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+
+/* MOBILE MENU BUTTONS */
 .mobile-menu {
   position: fixed;
-  top: 0;
+  top: 60px;          /* below header */
+  bottom: 40px;       /* above footer */
   left: -260px;
   width: 240px;
-  height: 100%;
 
-  background: rgba(255, 255, 255, 0.6); /* ✅ transparent */
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 
   padding: 20px;
   z-index: 2000;
   transition: left 0.3s ease;
 }
 
-/* DARK MODE MOBILE MENU */
-body.dark .mobile-menu {
-  background: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(14px);
-}
-
-/* MOBILE MENU BUTTONS */
-.mobile-menu button {
-  display: block;
-  width: 100%;
-  padding: 14px;
-  margin: 12px 0;
-  font-size: 16px;
-  border-radius: 14px;
-  border: none;
-  cursor: pointer;
-
-  background: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(6px);
-}
 
 /* DARK MODE BUTTONS */
-body.dark .mobile-menu button {
-  background: rgba(0, 0, 0, 0.5);
-  color: #fff;
+body.dark .mobile-menu {
+  background: rgba(0, 0, 0, 0.6);
 }
+
 
 /* CLOSE BUTTON */
 .close {
@@ -301,7 +339,25 @@ body.dark .mobile-menu button {
 #menuOverlay {
   display: none;
   position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.55);
+
+  /* START BELOW HEADER */
+  top: 60px;
+
+  /* END ABOVE FOOTER */
+  bottom: 40px;
+
+  left: 0;
+  right: 0;
+
+  background: rgba(0, 0, 0, 0.45);
   z-index: 1500;
 }
+
+
+
+@media (max-width: 768px) {
+  .filters {
+    display: none;   /* ❌ hide top menu on mobile */
+  }
+}
+

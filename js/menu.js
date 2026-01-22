@@ -1,12 +1,18 @@
 
+
 function openMenu() {
-  document.getElementById("mobileMenu").style.left = "0";
+  document.getElementById("sideMenu").style.left = "0";
   document.getElementById("menuOverlay").style.display = "block";
 }
 
 function closeMenu() {
-  document.getElementById("mobileMenu").style.left = "-260px";
+  document.getElementById("sideMenu").style.left = "-260px";
   document.getElementById("menuOverlay").style.display = "none";
+}
+
+function filterFromMenu(category) {
+  filterArt(category);
+  closeMenu();
 }
 
 
